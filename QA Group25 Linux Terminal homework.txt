@@ -1,0 +1,77 @@
+1) Посмотреть где я - pwd
+2) Создать папку - mkdir foldername
+3) Зайти в папку - cd foldername
+4) Создать 3 папки - mkdir foldername1 foldername2 foldername3
+5) Зайти в любоую папку - cd /c/path/foldername
+6) Создать 5 файлов (3 txt, 2 json) - touch 1.txt 2.txt 3.txt 4.json 5.json OR > 1.txt > 2.txt > 3.txt > 4.json > 5.json
+7) Создать 3 папки - mkdir foldername1 foldername2 foldername3
+8. Вывести список содержимого папки - ls -la
+9) + Открыть любой txt файл - vim filename.txt
+10) + написать туда что-нибудь, любой текст. - i for enter in insert mode , put anytext , esc.
+11) + сохранить и выйти. - :wq
+12) Выйти из папки на уровень выше - cd ../
+—
+13) переместить любые 2 файла, которые вы создали, в любую другую папку. mv filename1 filename2 /c/path/foldername/
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку. cp filename1 filename2 /c/path/foldername/
+15) Найти файл по имени - find . -name filename.txt OR - find . -name \*.txt (allow to find any files with .txt)
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает. 
+C помощью данной функции можно осуществить поиск нужного слова в файле а также строки где содержится нужное слово(или несколько слов) с точным совпадением или нет
+$ grep "any" /g/study/dir_2/1.txt Поиск любых строк где есть сочетание слова any в конкретном файле ( пример вывода anytext anyjghn gdfghanygdfjk any)
+$ grep -r "any" /g/study/ Поиск любых строк где есть сочетание слова any в каталоге /g/study/ и  его подкаталогах ( пример вывода /g/study/dir_2/1.txt:anytext)
+$ grep -w "any" /g/study/dir_2/1.txt Поиск строк где есть точное слово any в конкретном файле ( пример вывода any )
+$ egrep 'any|exmpl' /g/study/dir_2/1.txt Поиск строк по нескольким словам в конткретном файле ( пример вывода anytext anyjghn gdfghanygdfjk any exmpl agfexmplgbfd)
+$ egrep -w -r 'any|exmpl' /g/study/ Поиск нескольких слов с точным совпадением в указанном каталоге и его подкаталогах ( пример вывода 
+/g/study/dir_2/1.txt:any
+/g/study/dir_2/1.txt:exmpl
+/g/study/dir_3/1.txt:exmpl
+/g/study/dir_3/2.txt:any exmpl
+17) вывести несколько первых строк из текстового файла - head -2 filename.txt
+18) вывести несколько последних строк из текстового файла - tail -2 filename.txt
+19) просмотреть содержимое длинного файла (команда less) изучите как она работает.
+$ less bigtext.txt просмотр файла внутри терминала
+$ less -s bigtext.txt просмотр файла внутри терминала удаляя пустые строки
+Если во время просмотра файла нажать /anytext то он будет подсвечен вниз по тексту , с командой ?anytext вверх по тексту 
+Также можно использовать различные опции для команды less -a -c  -i -w etc
+20) вывести дату и время - date также можно с помощью опций измений формат вывода даты/времени , узнать дату созданию файлов.
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/object_info_3?name=Vadim&age=32&salary=1000
+{
+    "age": "32",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "pets": {
+            "cat": {
+                "age": 3,
+                "name": "Sunny"
+            },
+            "dog": {
+                "age": 4,
+                "name": "Luky"
+            }
+        },
+        "u_salary_1_5_year": 4000
+    },
+    "name": "Vadim",
+    "salary": 1000
+}
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+в терминале GitBash выполнить ./ test.sh
+Сам скрипт
+#!/bin/bash
+   cd /g/study/script
+   mkdir auto1 auto2 auto3
+   cd /g/study/script/auto1
+   touch 1.txt 2.txt 3.txt 4.json 5.json
+   mkdir foldername1 foldername2 foldername3
+   ls -la
+   mv 1.txt 4.json /g/study/script/auto2
