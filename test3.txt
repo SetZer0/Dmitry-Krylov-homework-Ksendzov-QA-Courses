@@ -1,3 +1,0 @@
-<xml>
-<name>Dmitry<name/>
-<age>30</age>
