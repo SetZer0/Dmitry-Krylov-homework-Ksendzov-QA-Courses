@@ -1,0 +1,84 @@
+ 1. Создать внешний репозиторий c названием TXT.
+    Идём на свой GitHub создаём новый репозиторий.
+ 2. Клонировать репозиторий TXT на локальный компьютер.
+    cd /g/group_25/
+    git clone https://github.com/SetZer0/TXT.git
+ 3. Внутри локального TXT создать файл “new.txt”.
+    cd /g/group_25/TXT/
+    touch new.txt
+ 4. Добавить файл под гит.
+    git add new.txt
+ 5. Закоммитить файл.
+    git commit -m "created new.txt file"
+ 6. Отправить файл на внешний GitHub репозиторий.
+    git push
+ 7. Отредактировать содержание файла “new.txt” - написать информацию о себе (ФИО, возраст, количество домашних животных, будущая желаемая зарплата). Всё написать в формате TXT.
+    vim new.txt -> i
+    Крылов
+    Дмитрий
+    Михайлович
+    30 лет
+    Кошка Черныш
+    Желаемая зарплата 700$
+    esc -> :wq
+ 8. Отправить изменения на внешний репозиторий.
+    git commit -am "new.txt file modified"
+    git push
+ 9. Создать файл preferences.txt
+    touch preferences.txt
+ 10. В файл preferences.txt” добавить информацию о своих предпочтениях (Любимый фильм, любимый сериал, любимая еда, любимое время года, сторона которую хотели бы посетить) в формате TXT.
+    vim preferences.txt -> i
+    Любимые фильмы: V - значит Vендетта
+                Мулан
+                Достать ножи
+Любимые сериалы: Отбросы
+                 Ведьмак
+                 Игра Престолов
+Любимая еда: Борщ
+             Плов
+             Пицца
+Любимое время года: Лето
+Страна для путешествия: Япония
+   esc -> :wq
+ 11. Создать файл skills.txt добавить информацию о скиллах которые будут изучены на курсе в формате TXT
+     touch skills.txt -> i
+     Python
+SQL
+Postman
+GitHub
+TerminalLinux
+Charles
+AndroidStudio
+GoogleTables
+ 12. Сделать коммит в одну строку.
+     git add .
+     git commit -am "Created 2 new files"
+ 13. Отправить сразу 2 файла на внешний репозиторий.
+     git push
+ 14. На веб интерфейсе создать файл bug_report.txt.
+     На GitHub нажимаем add file и создаем bug_report.txt
+ 15. Сделать Commit changes (сохранить) изменения на веб интерфейсе.
+     Пишем комментарий и жмакаем на зеленую кнопку commit
+ 16. На веб интерфейсе модифицировать файл bug_report.txt, добавить баг репорт в формате TXT.
+     Щелкаем на название файла в репозитории, модифицируем
+     Date: 12.04.2021
+Title: www.example.com orders duplicated after request second verification code for paying
+Status: New
+Priority: High
+Severity: Major
+Author: Dmitry Krylov
+Assigned_to: DeveloperID001
+Enviroment: Mozilla Firefox x64 94.0.2
+Description: When you created order , and confirm paying if you request second verification code, your create second same order instead continue your first
+Step_to_reproduce:
+                       1)Login on site www.example.com
+                       2)Add anything in card
+                       3)Confirm order
+                       4)Request verification code
+                       5)Request verification code second time
+ Expected_Result: You receive second verification code, and after enter it you will finish your current order
+ Actual_Result: You receive second verification code , and after enter it you will finish second same order, and first one will be unfinished, all codes and discount will dissappeared
+ 17. Сделать Commit changes (сохранить) изменения на веб интерфейсе.
+     Пишем комментарий и жмакаем на зеленую кнопку commit
+ 18. Синхронизировать внешний и локальный репозиторий TXT
+     git pull

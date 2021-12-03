@@ -1,0 +1,223 @@
+GIT Homework 1
+
+Для выполнения задания у вас должен быть установлен для Windows - GitBash.
+Создан аккаунт в GitHub
+
+Все шаги сценария выполняйте в терминале GitBush, Terminal, в папке под гитом.
+
+
+Как отправить ДЗ на проверку.
+ 1. Создайте текстовый файл как в первом ДЗ по Terminal.
+ 2. Сценарий перенесите в этот файл.
+ 3. На против каждого действия - напишите команду в GitBash
+
+Файл со сценарием и ссылку на свой гит хаб отправляйте менторам на проверку.
+
+JSON
+ 4. Создать внешний репозиторий c названием JSON. 
+    Идём на свой GitHub создаём новый репозиторий.
+ 5. Клонировать репозиторий JSON на локальный компьютер. 
+    git clone https://github.com/SetZer0/JSON.git
+ 6. Внутри локального JSON создать файл “new.json”.
+    cd /g/group_25/JSON/ -> touch new.json
+ 7. Добавить файл под гит. 
+    git add new.json
+ 8. Закоммитить файл.
+    git commit -m "new file created"
+ 9. Отправить файл на внешний GitHub репозиторий.
+    git push
+ 10. Отредактировать содержание файла “new.json” - написать информацию о себе 
+     (ФИО, возраст, количество домашних животных, будущая желаемая зарплата). Всё написать в формате JSON.
+     vim new.json -> i -> {
+        "person":{
+                "name":"Dmitry",
+                "surname":"Krylov",
+                "middle_name":"Mikhailovich"
+                "age":"30",
+        },
+                "pet":{
+                        "name":"Chernysh"
+                },
+                "salaryestimated":"700$"
+}
+ -> esc -> :wq
+
+ 11. Отправить изменения на внешний репозиторий. 
+     git add new.json -> git commit -m "File modifed" -> git push / Or git commit -am "file modifed" -> git push 
+ 12. Создать файл preferences.json 
+     touch preferences.json
+ 13. В файл preferences.json добавить информацию о своих предпочтениях 
+     (Любимый фильм, любимый сериал, любимая еда, любимое время года, сторона которую хотели бы посетить) в формате JSON.
+          vim preferences.json -> i ->
+     {
+        "FavFilms":[
+                "V - means Vendetta",
+                "Mulan",
+                "Knives out"
+        ],
+        "FavTVShow":[
+                "Misfits",
+                "Witcher",
+                "Game of thrones"
+        ],
+        "FavFood":[
+                "Borsch",
+                "Plov",
+                "Pizza"
+        ],
+        "FavSeason":"Summer",
+        "CountryForTravel":"Japan"
+}
+ -> esc -> :wq 
+ 14. Создать файл sklls.json добавить информацию о скиллах которые будут изучены на курсе в формате JSON 
+     touch skills.json
+     vim skills.json -> i ->
+     {
+        "Skills":[
+                "Python",
+                "SQL",
+                "Postman",
+                "GitHub",
+                "TerminalLinux",
+                "Charles",
+                "AndroidStudio",
+                "GoogleTables"
+        ]
+}
+     -> esc -> :wq
+ 15. Отправить сразу 2 файла на внешний репозиторий. 
+     git add . -> git commit -m "created 2 new files"
+ 16. На веб интерфейсе создать файл bug_report.json.
+     На GitHub нажимаем add file и создаем bug_report.json
+ 17. Сделать Commit changes (сохранить) изменения на веб интерфейсе.
+     Пишем комментарий и жмакаем на зеленую кнопку commit
+ 18. На веб интерфейсе модифицировать файл bug_report.json, добавить баг репорт в формате JSON.
+     Щелкаем на название файла в репозитории, модифицируем
+     {
+  "Date":"12.04.2021",
+  "Title":"www.example.com orders duplicated after request second verification code for paying",
+  "Status":"New",
+  "Priority":"High",
+  "Severity":"Major",
+  "Author":"Dmitry Krylov",
+  "Assigned_to":"DeveloperID001",
+  "Enviroment":"Mozilla Firefox x64 94.0.2",
+  "Description":"When you created order , and confirm paying if you request second verification code, your create second same order instead continue your first",
+  "Step_to_reproduce":[
+                       "Login on site www.example.com",
+                       "Add anything in card",
+                       "Confirm order",
+                       "Request verification code",
+                       "Request verification code second time"
+                      ],
+  "Expected_Result":"You receive second verification code, and after enter it you will finish your current order",
+  "Actual_Result":"You receive second verification code , and after enter it you will finish second same order, and first one will be unfinished, all codes and discount will dissappeared"
+}  
+ 19. Сделать Commit changes (сохранить) изменения на веб интерфейсе.
+     Пишем комментарий и жмакаем на зеленую кнопку commit
+ 20. Синхронизировать внешний и локальный репозиторий JSON
+     git pull
+
+
+XML
+ 21. Создать внешний репозиторий c названием XML.
+     Идём на свой GitHub создаём новый репозиторий.
+ 22. Клонировать репозиторий XML на локальный компьютер.
+     $ git clone https://github.com/SetZer0/XML.git
+ 23. Внутри локального XML создать файл “new.xml”.
+     cd /g/group_25/XML/ -> touch new.xml
+ 24. Добавить файл под гит.
+     git add . / or git add new.xml
+ 25. Закоммитить файл.
+     git commit -m "created new.xml" 
+ 26. Отправить файл на внешний GitHub репозиторий.
+     git push
+ 27. Отредактировать содержание файла “new.xml” - написать информацию о себе (ФИО, возраст, количество домашних животных, будущая желаемая зарплата). Всё написать в формате XML.
+     vim new.xml -> i ->
+     <?xml version="1.0" encoding="utf-8"?>
+<About_me>
+        <name>Dmitry</name>
+        <surname>Krylov</surname>
+        <middlename>Mikhailovich</middlename>
+        <age>30</age>
+        <pet>Chernysh</pet>
+        <estimatedsalary>700</estimatedsalary>
+</About_me>
+  esc -> :wq
+ 28. Отправить изменения на внешний репозиторий.
+     git commit -am "new.xml modifed"
+     git push
+ 29. Создать файл preferences.xml
+     touch preferences.xml
+ 30. В файл preferences.xml добавить информацию о своих предпочтениях (Любимый фильм, любимый сериал, любимая еда, любимое время года, сторона которую хотели бы посетить) в формате XML.
+     vim preferences.xml -> i 
+     <?xml version="1.0" encoding="utf-8"?>
+<MyPreferences>
+	<FavFilms>
+		V - means Vendetta
+		Mulan
+		Knives out
+ </FavFilms>
+        <FavTVShow>
+	        Misfits
+	        Witcher
+	        Game of thrones
+ </FavTVShow>
+        <FavFood>
+		Borsch
+		Plov
+		Pizza
+	</FavFood>
+	<FavSeason>Summer</FavSeason>
+	<CountryForTravel>Japan</CountryForTravel>
+</MyPreferences>
+ 31. Создать файл skills.xml добавить информацию о скиллах которые будут изучены на курсе в формате XML
+     touch skills.xml
+     vim skills.xml -> i
+     <?xml version="1.0" encoding="utf-8"?>
+<Skills>
+	Python
+	SQL
+	Postman
+	GitHub
+	TerminalLinux
+	Charles
+	AndroidStudio
+	GoogleTables
+</Skills>
+    esc -> :wq     
+ 32. Сделать коммит в одну строку.
+     git commit -am "created 2 new files"
+ 33. Отправить сразу 2 файла на внешний репозиторий.
+     git push
+ 34. На веб интерфейсе создать файл bug_report.xml.
+     На GitHub нажимаем add file и создаем bug_report.xml
+ 35. Сделать Commit changes (сохранить) изменения на веб интерфейсе.
+     Пишем комментарий и жмакаем на зеленую кнопку commit
+ 36. На веб интерфейсе модифицировать файл bug_report.xml, добавить баг репорт в формате XML.
+     Щелкаем на название файла в репозитории, модифицируем
+     <?xml version="1.0" encoding="utf-8"?>
+<BugReport>
+  <Date>12.04.2021</Date>
+  <Title>www.example.com orders duplicated after request second verification code for paying</Title>
+  <Status>New</Status>
+  <Priority>High</Priority>
+  <Severity>Major</Severity>
+  <Author>Dmitry Krylov</Author>
+  <Assigned_to>DeveloperID001</Assigned_to>
+  <Enviroment>Mozilla Firefox x64 94.0.2</Enviroment>
+  <Description>When you created order , and confirm paying if you request second verification code, your create second same order instead continue your first</Description>
+  <Step_to_reproduce>
+                       1)Login on site www.example.com
+                       2)Add anything in card
+                       3)Confirm order
+                       4)Request verification code
+                       5)Request verification code second time
+                      </Step_to_reproduce>
+  <Expected_Result>You receive second verification code, and after enter it you will finish your current order</Expected_Result>
+  <Actual_Result>You receive second verification code , and after enter it you will finish second same order, and first one will be unfinished, all codes and discount will dissappeared</Actual_Result>
+</BugReport>
+ 37. Сделать Commit changes (сохранить) изменения на веб интерфейсе.
+     Пишем комментарий и жмакаем на зеленую кнопку commit
+ 38. Синхронизировать внешний и локальный репозиторий XML
+     git pull
