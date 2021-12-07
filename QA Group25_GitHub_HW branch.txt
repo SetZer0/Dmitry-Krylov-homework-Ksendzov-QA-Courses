@@ -1,0 +1,86 @@
+GitHub. HW_2
+1. На локальном репозитории сделать ветки для:
+- Postman
+- Jmeter
+- CheckLists
+- Bag Reports
+- SQL
+- Charles
+- Mobile testing
+
+git branch Postman
+git branch Jmeter
+git branch ChechLists
+git branch BugReports
+git branch SQL
+git branch Charles
+git branch MobileTesting
+
+2. Запушить все ветки на внешний репозиторий
+git push -u origin Postman
+git push -u origin Jmeter
+git push -u origin CheckLists
+git push -u origin BugReports
+git push -u origin SQL
+git push -u origin Charles
+git push -u origin MobileTesting
+3. В ветке Bag Reports сделать текстовый документ со структурой баг репорта
+git checkout BugReports
+Touch BugReport_01.txt
+vim BugReport_01.txt -> i 
+Date: 12.07.2021
+Title: www.example.com/checkout missing paypal option
+Status: New
+Priority: High
+Severity: Blocker
+Author: Dmitry Krylov
+Assigned_to: DeveloperID002
+Enviroment: Mozilla Firefox x64 94.0.2
+Desciption: On Checkout page missing paypal option what must be added
+Step to reproduce:
+1)Login on site www.example.com
+2)Add anything on cart
+3)Confirm order
+Expected_Result: Here must be option continue via PayPal
+Actual_Result:Paypal option missing
+esc -> :wq
+4. Запушить структуру багрепорта на внешний репозиторий
+git add BugReport_01.txt
+git commit -m "Added BugReport_01"
+git push
+5. Вмержить ветку Bag Reports в Main
+git checkout main
+git merge BugReports
+6. Запушить main на внешний репозиторий.
+git push
+7. В ветке CheckLists набросать структуру чек листа.
+git checkout CheckLists
+touch CheckList_01.txt
+vim CheckList_01.txt -> i
+www.example.com
+  Register
+Email - Passed
+SocialNetwork - Failed
+ValidationFields - Passed
+  Authorization
+User_Activated - Passed
+User_NonActivated - Passed
+User_PassReset - Passed
+ValidationFields - Passed
+  Profile
+Name_Change - Passed
+Email_Change - Failed
+Password_Change - Failed
+ValidationFields - Passed
+Subscribe - Failed
+Account_Delete - Failed
+esc -> :wq
+8. Запушить структуру на внешний репозиторий
+git add CheckList_01.txt
+git commit -m "Added CheckList_01.txt"
+git push
+9. На внешнем репозитории сделать Pull Request ветки CheckLists в main
+Идём на свой GitHub , нажимаем Pull Request - видим Pull Request от ветки CheckLists, принимаем и мерджим, на main ветке появился новый файл
+10. Синхронизировать Внешнюю и Локальную ветки Main
+git fetch
+git pull
