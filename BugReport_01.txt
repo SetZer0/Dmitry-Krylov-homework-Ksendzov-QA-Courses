@@ -1,0 +1,15 @@
+Date: 12.07.2021
+Title: www.example.com/checkout missing paypal option
+Status: New
+Priority: High
+Severity: Blocker
+Author: Dmitry Krylov
+Assigned_to: DeveloperID002
+Enviroment: Mozilla Firefox x64 94.0.2
+Desciption: On Checkout page missing paypal option what must be added
+Step to reproduce:
+1)Login on site www.example.com
+2)Add anything on cart
+3)Confirm order
+Expected_Result: Here must be option continue via PayPal
+Actual_Result:Paypal option missing
