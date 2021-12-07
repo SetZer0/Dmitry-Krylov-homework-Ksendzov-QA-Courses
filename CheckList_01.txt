@@ -1,0 +1,17 @@
+www.example.com
+  Register
+Email - Passed
+SocialNetwork - Failed
+ValidationFields - Passed
+  Authorization
+User_Activated - Passed
+User_NonActivated - Passed
+User_PassReset - Passed
+ValidationFields - Passed
+  Profile
+Name_Change - Passed
+Email_Change - Failed
+Password_Change - Failed
+ValidationFields - Passed
+Subscribe - Failed
+Account_Delete - Failed
