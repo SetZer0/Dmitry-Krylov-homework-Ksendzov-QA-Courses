@@ -34,7 +34,61 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_01",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "162.55.220.72:5005/get_method?name=Dmitry&age=30",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"get_method"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dmitry"
+								},
+								{
+									"key": "age",
+									"value": "30"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:48:40 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    \"Dmitry\",\n    \"30\"\n]"
+				}
+			]
 		},
 		{
 			"name": "EP_02",
@@ -75,7 +129,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_02",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Dmitry",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "1000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "162.55.220.72:5005/user_info_3",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"user_info_3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "116"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:51:15 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": \"30\",\n    \"family\": {\n        \"children\": [\n            [\n                \"Alex\",\n                24\n            ],\n            [\n                \"Kate\",\n                12\n            ]\n        ],\n        \"u_salary_1_5_year\": 4000\n    },\n    \"name\": \"Dmitry\",\n    \"salary\": 1000\n}"
+				}
+			]
 		},
 		{
 			"name": "EP_03",
@@ -110,7 +228,65 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_03",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "162.55.220.72:5005/object_info_1?name=Dmitry&age=30&weight=51",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"object_info_1"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dmitry"
+								},
+								{
+									"key": "age",
+									"value": "30"
+								},
+								{
+									"key": "weight",
+									"value": "51"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:53:54 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": 30,\n    \"daily_food\": 0.612,\n    \"daily_sleep\": 127.5,\n    \"name\": \"Dmitry\"\n}"
+				}
+			]
 		},
 		{
 			"name": "EP_04",
@@ -145,7 +321,65 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_03",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "162.55.220.72:5005/object_info_2?name=Dmitry&age=30&salary=1000",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"object_info_2"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dmitry"
+								},
+								{
+									"key": "age",
+									"value": "30"
+								},
+								{
+									"key": "salary",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "237"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:52:43 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"person\": {\n        \"u_age\": 30,\n        \"u_name\": [\n            \"Dmitry\",\n            1000,\n            30\n        ],\n        \"u_salary_5_years\": 4200\n    },\n    \"qa_salary_after_1.5_year\": 3300,\n    \"qa_salary_after_12_months\": 2700,\n    \"qa_salary_after_3.5_years\": 3800,\n    \"qa_salary_after_6_months\": 2000,\n    \"start_qa_salary\": 1000\n}"
+				}
+			]
 		},
 		{
 			"name": "EP_05",
@@ -180,7 +414,65 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_05",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "162.55.220.72:5005/object_info_3?name=Dmitry&age=30&salary=1000",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"object_info_3"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dmitry"
+								},
+								{
+									"key": "age",
+									"value": "30"
+								},
+								{
+									"key": "salary",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "186"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:54:54 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": \"30\",\n    \"family\": {\n        \"children\": [\n            [\n                \"Alex\",\n                24\n            ],\n            [\n                \"Kate\",\n                12\n            ]\n        ],\n        \"pets\": {\n            \"cat\": {\n                \"age\": 3,\n                \"name\": \"Sunny\"\n            },\n            \"dog\": {\n                \"age\": 4,\n                \"name\": \"Luky\"\n            }\n        },\n        \"u_salary_1_5_year\": 4000\n    },\n    \"name\": \"Dmitry\",\n    \"salary\": 1000\n}"
+				}
+			]
 		},
 		{
 			"name": "EP_06",
@@ -215,7 +507,65 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_06",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "162.55.220.72:5005/object_info_4?name=Dmitry&age=30&salary=1000",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"object_info_4"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Dmitry"
+								},
+								{
+									"key": "age",
+									"value": "30"
+								},
+								{
+									"key": "salary",
+									"value": "1000"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:55:49 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": 30,\n    \"name\": \"Dmitry\",\n    \"salary\": [\n        1000,\n        \"2000\",\n        \"3000\"\n    ]\n}"
+				}
+			]
 		},
 		{
 			"name": "EP_07",
@@ -256,7 +606,71 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "EP_07",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Dmitry",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "30",
+									"type": "text"
+								},
+								{
+									"key": "salary",
+									"value": "1000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "162.55.220.72:5005/user_info_2",
+							"host": [
+								"162",
+								"55",
+								"220",
+								"72"
+							],
+							"port": "5005",
+							"path": [
+								"user_info_2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "237"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.10"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 14 Dec 2021 11:56:47 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"person\": {\n        \"u_age\": 30,\n        \"u_name\": [\n            \"Dmitry\",\n            1000,\n            30\n        ],\n        \"u_salary_5_years\": 4200\n    },\n    \"qa_salary_after_1.5_year\": 3300,\n    \"qa_salary_after_12_months\": 2700,\n    \"qa_salary_after_3.5_years\": 3800,\n    \"qa_salary_after_6_months\": 2000,\n    \"start_qa_salary\": 1000\n}"
+				}
+			]
 		}
 	]
 }
