@@ -20,7 +20,9 @@
 							"});\r",
 							"pm.test(\"Verify respone is string\", function () {\r",
 							"    typeof(pm.response) === \"string\" || true;\r",
-							"});"
+							"});\r",
+							"// как вариант можно использовать в одну строку\r",
+							"// tests[\"Verify respone is string\"] = typeof(pm.response) === \"string\" || true;"
 						],
 						"type": "text/javascript"
 					}
