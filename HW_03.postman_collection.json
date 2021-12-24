@@ -1,0 +1,564 @@
+{
+	"info": {
+		"_postman_id": "d0c8c27e-a688-44fe-9ad7-42ffe24ea98c",
+		"name": "HW_03",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "EP_01",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"console.log(\"Token = \" + jsonData.token);\r",
+							"pm.environment.set(\"Token\", jsonData.token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Dmitry",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qpwo10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_02",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"var reqdata = JSON.parse(pm.request.body.raw);\r",
+							"\r",
+							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_02Schema.json\";\r",
+							"pm.sendRequest(schemaURL,(error, response) => {\r",
+							"    if (error) {\r",
+							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"    } else {\r",
+							"        console.log(response.json());\r",
+							"var jsonDataGit = response.json();\r",
+							"decoded =JSON.parse(atob(jsonDataGit.content));\r",
+							"console.log(decoded);\r",
+							"    }  \r",
+							"pm.test('Schema is valid ', function(){\r",
+							"        pm.expect(tv4.validate(jsonData, decoded)).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							"ShouldBeEqual = {\r",
+							"    \"Salary Base Check \": [jsonData.start_qa_salary, reqdata.salary],\r",
+							"    \"Salary 2*Coeff Check 6 Months  \": [jsonData.qa_salary_after_6_months, reqdata.salary*2],\r",
+							"    \"Salary 2.9*Coeff Check 12 Months  \": [jsonData.qa_salary_after_12_months, reqdata.salary*2.9],\r",
+							"    \"Salary 4*Coeff Check 1.5 Years  \": [jsonData.person.u_salary_1_5_year, reqdata.salary*4],\r",
+							"};\r",
+							"\r",
+							"for (const [testName, compare] of Object.entries(ShouldBeEqual)) {\r",
+							"    pm.test(testName, function () {\r",
+							"        pm.expect(compare[0]).to.eql(compare[1]);\r",
+							"    });\r",
+							"}\r",
+							"console.log(\"Salary_accumulated = \" + jsonData.person.u_salary_1_5_year);\r",
+							"pm.environment.set(\"Salary_accumulated\", jsonData.person.u_salary_1_5_year);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"age\":30,\r\n\"salary\":1000,\r\n\"name\":\"Dmitry\",\r\n\"auth_token\":\"{{Token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_03",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"var reqData = request.data\r",
+							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_03Schema.json\";\r",
+							"pm.sendRequest(schemaURL,(error, response) => {\r",
+							"    if (error) {\r",
+							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"    } else {\r",
+							"        console.log(response.json());\r",
+							"var jsonDataGit = response.json();\r",
+							"decoded =JSON.parse(atob(jsonDataGit.content));\r",
+							"console.log(decoded);\r",
+							"    }  \r",
+							"pm.test('Schema is valid ', function(){\r",
+							"        pm.expect(tv4.validate(jsonData, decoded)).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							"ShouldBeEqual = {\r",
+							"    \"Salary Base Check \": [jsonData.salary[0], +reqData.salary],\r",
+							"    \"Salary 2*Coeff Check \": [+jsonData.salary[1], reqData.salary*2],\r",
+							"    \"Salary 3*Coeff Check \": [+jsonData.salary[2], reqData.salary*3],\r",
+							"    \"Salary*3Coeff>than salary*2 \": [true, jsonData.salary[2] > jsonData.salary[1]],\r",
+							"    \"Salary*3Coeff>than base salary \": [true, jsonData.salary[2] > jsonData.salary[0]],\r",
+							"};\r",
+							"\r",
+							"for (const [testName, compare] of Object.entries(ShouldBeEqual)) {\r",
+							"    pm.test(testName, function () {\r",
+							"        pm.expect(compare[0]).to.eql(compare[1]);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Dmitry",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/new_data",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"new_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_04",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"var reqData = request.data\r",
+							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_04Schema.json\";\r",
+							"pm.sendRequest(schemaURL,(error, response) => {\r",
+							"    if (error) {\r",
+							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"    } else {\r",
+							"        console.log(response.json());\r",
+							"var jsonDataGit = response.json();\r",
+							"decoded =JSON.parse(atob(jsonDataGit.content));\r",
+							"console.log(decoded);\r",
+							"    }  \r",
+							"pm.test('Schema is valid ', function(){\r",
+							"        pm.expect(tv4.validate(jsonData, decoded)).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							"ShouldBeEqual = {\r",
+							"    \"Daily_food:weight*0.012 Check \": [jsonData.daily_food, reqData.weight*0.012],\r",
+							"    \"Daily_sleep:weight*2.5 \": [+jsonData.daily_sleep, reqData.weight*2.5],\r",
+							"};\r",
+							"\r",
+							"for (const [testName, compare] of Object.entries(ShouldBeEqual)) {\r",
+							"    pm.test(testName, function () {\r",
+							"        pm.expect(compare[0]).to.eql(compare[1]);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "weight",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Dmitry",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/test_pet_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test_pet_info"
+					],
+					"query": [
+						{
+							"key": "age",
+							"value": "30",
+							"disabled": true
+						},
+						{
+							"key": "weight",
+							"value": "55",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Dmitry",
+							"disabled": true
+						},
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_05",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"var reqData = request.data\r",
+							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_05Schema.json\";\r",
+							"pm.sendRequest(schemaURL,(error, response) => {\r",
+							"    if (error) {\r",
+							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"    } else {\r",
+							"        console.log(response.json());\r",
+							"var jsonDataGit = response.json();\r",
+							"decoded =JSON.parse(atob(jsonDataGit.content));\r",
+							"console.log(decoded);\r",
+							"    }  \r",
+							"pm.test('Schema is valid ', function(){\r",
+							"        pm.expect(tv4.validate(jsonData, decoded)).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							"ShouldBeEqual = {\r",
+							"    \"NameEnv=ReqName \": [jsonData.name, pm.environment.get(\"name\")],\r",
+							"    \"AgeResp=ReqAge\": [+jsonData.age, +reqData.age],\r",
+							"};\r",
+							"for (const [testName, compare] of Object.entries(ShouldBeEqual)) {\r",
+							"    pm.test(testName, function () {\r",
+							"        pm.expect(compare[0]).to.eql(compare[1]);\r",
+							"    });\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "age",
+							"value": "30",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Dmitry",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}//get_test_user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"",
+						"get_test_user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_06",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"function random_item(items)\r",
+							"{\r",
+							"return items[Math.floor(Math.random()*items.length)];\r",
+							"}\r",
+							"var random = random_item(jsonData).Cur_ID  \r",
+							"console.log(random)\r",
+							"pm.environment.set(\"curr_code\",random);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/currency",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"currency"
+					],
+					"query": [
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_07",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"var reqData = request.data\r",
+							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_07Schema.json\";\r",
+							"pm.sendRequest(schemaURL,(error, response) => {\r",
+							"    if (error) {\r",
+							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"    } else {\r",
+							"        console.log(response.json());\r",
+							"var jsonDataGit = response.json();\r",
+							"decoded =JSON.parse(atob(jsonDataGit.content));\r",
+							"console.log(decoded);\r",
+							"    }  \r",
+							"pm.test('Schema is valid ', function(){\r",
+							"        pm.expect(tv4.validate(jsonData, decoded)).to.be.true;\r",
+							"    });\r",
+							"});\r",
+							"// var currency_list  = \"http://162.55.220.72:5005/currency\"\r",
+							"// pm.sendRequest (currency_list,(err,resp) => {\r",
+							"//     if(err) {\r",
+							"//         console.log(\"Request for list Currency failed: \" + Error);\r",
+							"//         } else {\r",
+							"//             console.log(resp.json());\r",
+							"//         }\r",
+							"// });\r",
+							"pm.sendRequest({\r",
+							"    url: 'http://162.55.220.72:5005/currency',\r",
+							"    method: 'POST',\r",
+							"    header: 'headername1:value1',\r",
+							"    body: {\r",
+							"        mode: 'formData',\r",
+							"        formdata: [\r",
+							"            {key: \"auth_token\", value:pm.environment.get(\"Token\"),disabled:false}\r",
+							"        ]\r",
+							"    }\r",
+							"},  (err, resp) => {\r",
+							"    console.log(err,resp) \r",
+							"    if(err) {\r",
+							"        console.log(\"Request for list Currency failed: \" + Error);\r",
+							"        } else {\r",
+							"            // console.log(resp.json());\r",
+							"            var currency_list = resp.json();\r",
+							"        }\r",
+							"// Object.entries(currency_list).forEach(([key,value]) => {\r",
+							"//     console.log(`${key},${value}`);\r",
+							"// });\r",
+							"currency_list.forEach(function(element){\r",
+							"pm.sendRequest({\r",
+							"    url: 'http://162.55.220.72:5005/curr_byn',\r",
+							"    method: 'POST',\r",
+							"    header: 'headername1:value1',\r",
+							"    body: {\r",
+							"        mode: 'formData',\r",
+							"        formdata: [\r",
+							"            {key: \"auth_token\", value:pm.environment.get(\"Token\"),disabled:false},\r",
+							"            {key: \"curr_code\", value:element.Cur_ID, disabled:false}\r",
+							"        ]\r",
+							"    }\r",
+							"}, (err, resp) => \r",
+							" { console.log(err, resp)\r",
+							"  if (err) {\r",
+							"      console.log(\"Request for list Currency failed: \" + Error);\r",
+							"  } else {\r",
+							"      var status_ok = resp.json();\r",
+							"  } if (true, status_ok.hasOwnProperty(\"Cur_OfficialRate\")) \r",
+							"      console.log(status_ok);\r",
+							"  \r",
+							"  }\r",
+							" \r",
+							")    \r",
+							"// console.log(element, element.Cur_ID);\r",
+							"// console.log(element.Cur_ID);\r",
+							"}); \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"type": "text"
+						},
+						{
+							"key": "curr_code",
+							"value": "{{curr_code}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/curr_byn",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"curr_byn"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
