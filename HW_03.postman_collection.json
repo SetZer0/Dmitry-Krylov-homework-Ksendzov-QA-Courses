@@ -220,7 +220,7 @@
 							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_04Schema.json\";\r",
 							"pm.sendRequest(schemaURL,(error, response) => {\r",
 							"    if (error) {\r",
-							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"        console.log(\"Nested request failed, original error: \" + error);\r",
 							"    } else {\r",
 							"        console.log(response.json());\r",
 							"var jsonDataGit = response.json();\r",
@@ -323,7 +323,7 @@
 							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_05Schema.json\";\r",
 							"pm.sendRequest(schemaURL,(error, response) => {\r",
 							"    if (error) {\r",
-							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"        console.log(\"Nested request failed, original error: \" + error);\r",
 							"    } else {\r",
 							"        console.log(response.json());\r",
 							"var jsonDataGit = response.json();\r",
@@ -457,7 +457,7 @@
 							"var schemaURL =  \"https://api.github.com/repos/SetZer0/Dmitry-Krylov-homework-Ksendzov-QA-Courses/contents/SchemesPostman_HW_03/EP_07Schema.json\";\r",
 							"pm.sendRequest(schemaURL,(error, response) => {\r",
 							"    if (error) {\r",
-							"        console.log(\"Nested request failed, origin error: \" + error);\r",
+							"        console.log(\"Nested request failed, original error: \" + error);\r",
 							"    } else {\r",
 							"        console.log(response.json());\r",
 							"var jsonDataGit = response.json();\r",
@@ -468,14 +468,6 @@
 							"        pm.expect(tv4.validate(jsonData, decoded)).to.be.true;\r",
 							"    });\r",
 							"});\r",
-							"// var currency_list  = \"http://162.55.220.72:5005/currency\"\r",
-							"// pm.sendRequest (currency_list,(err,resp) => {\r",
-							"//     if(err) {\r",
-							"//         console.log(\"Request for list Currency failed: \" + Error);\r",
-							"//         } else {\r",
-							"//             console.log(resp.json());\r",
-							"//         }\r",
-							"// });\r",
 							"pm.sendRequest({\r",
 							"    url: 'http://162.55.220.72:5005/currency',\r",
 							"    method: 'POST',\r",
@@ -494,9 +486,6 @@
 							"            // console.log(resp.json());\r",
 							"            var currency_list = resp.json();\r",
 							"        }\r",
-							"// Object.entries(currency_list).forEach(([key,value]) => {\r",
-							"//     console.log(`${key},${value}`);\r",
-							"// });\r",
 							"currency_list.forEach(function(element){\r",
 							"pm.sendRequest({\r",
 							"    url: 'http://162.55.220.72:5005/curr_byn',\r",
@@ -509,20 +498,19 @@
 							"            {key: \"curr_code\", value:element.Cur_ID, disabled:false}\r",
 							"        ]\r",
 							"    }\r",
-							"}, (err, resp) => \r",
-							" { console.log(err, resp)\r",
-							"  if (err) {\r",
-							"      console.log(\"Request for list Currency failed: \" + Error);\r",
-							"  } else {\r",
-							"      var status_ok = resp.json();\r",
-							"  } if (true, status_ok.hasOwnProperty(\"Cur_OfficialRate\")) \r",
-							"      console.log(status_ok);\r",
-							"  \r",
-							"  }\r",
-							" \r",
-							")    \r",
-							"// console.log(element, element.Cur_ID);\r",
-							"// console.log(element.Cur_ID);\r",
+							"}, (err, resp) => {\r",
+							"        console.log(\"Response status code:\" + resp[\"code\"])\r",
+							"        // Check if status code is == 200 OK in response object\r",
+							"        if (resp[\"code\"] == 200){\r",
+							"            // Get decoded body from request object\r",
+							"            var responseDecoded = resp.json();\r",
+							"            // Check if we have required field..\r",
+							"            if (responseDecoded.hasOwnProperty(\"Cur_OfficialRate\")) {\r",
+							"                // Profit\r",
+							"                console.log(responseDecoded)\r",
+							"            }\r",
+							"        }\r",
+							"    })\r",
 							"}); \r",
 							"});"
 						],
@@ -543,7 +531,7 @@
 						},
 						{
 							"key": "curr_code",
-							"value": "{{curr_code}}",
+							"value": "497",
 							"type": "text"
 						}
 					]
@@ -555,6 +543,85 @@
 					],
 					"path": [
 						"curr_byn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EP_08 ***",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Get initial currency list from request\r",
+							"var currencyList = pm.response.json();\r",
+							"\r",
+							"// Iterate it \r",
+							"currencyList.forEach((element) => {\r",
+							"    // Send async request for every currency in list ( let my notebook burn!! )\r",
+							"    pm.sendRequest({\r",
+							"        url: 'http://'+pm.environment.get(\"url\")+'/curr_byn',\r",
+							"        method: 'POST',\r",
+							"        body: {\r",
+							"            mode: 'formdata',\r",
+							"            formdata: [\r",
+							"                {key: 'auth_token', value : pm.environment.get(\"Token\")},\r",
+							"                {key: 'curr_code',  value: element[\"Cur_ID\"]}\r",
+							"            ]\r",
+							"        }\r",
+							"    }, (err, resp) => {\r",
+							"        console.log(\"Response status code:\" + resp[\"code\"])\r",
+							"        // Check if status code is == 200 OK in response object\r",
+							"        if (resp[\"code\"] == 200){\r",
+							"            // Get decoded body from request object\r",
+							"            var responseDecoded = resp.json();\r",
+							"            // Check if we have required field..\r",
+							"            if (responseDecoded.hasOwnProperty(\"Cur_OfficialRate\")) {\r",
+							"                // Profit\r",
+							"                console.log(responseDecoded)\r",
+							"            }\r",
+							"        }\r",
+							"    })\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{Token}}",
+							"type": "text"
+						},
+						{
+							"key": "curr_code",
+							"value": "{{curr_code}}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://162.55.220.72:5005/currency",
+					"protocol": "http",
+					"host": [
+						"162",
+						"55",
+						"220",
+						"72"
+					],
+					"port": "5005",
+					"path": [
+						"currency"
 					]
 				}
 			},
