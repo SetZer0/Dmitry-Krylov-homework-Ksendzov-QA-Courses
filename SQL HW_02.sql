@@ -3,9 +3,6 @@ create table employees(
 	id serial primary key,
 	employee_name varchar(50) not null
 );
---select * from employees;
---select * from employee_salary;
---select * from salary;
 
 --2)Наполнить таблицу employee 70 строками.
 insert into employees(employee_name)
@@ -248,4 +245,3 @@ values (7, 2),
  	   (38, 9),
  	   (39, 10),
  	   (40, 11);
---select * from roles_employee;	   
