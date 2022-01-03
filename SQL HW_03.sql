@@ -18,24 +18,22 @@ join salary
 		where salary.monthly_salary < 2000;
 	
 --3.Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
-select monthly_salary as "Employee salary",
-	   employee_name as "Ghost Employees"
+select monthly_salary as "Unassigned Salary"
 from salary
-join employee_salary
-	on salary.id = employee_salary.salary_id
+left join employee_salary
+	on salary.id = employee_salary.salary_id 
 left join employees
-	on employee_salary.employee_id = employees.id 
-    	where employee_name is null;
+	on  employees.id = employee_salary.employee_id 
+    	where employee_id is null;
     
 --4.Вывести все зарплатные позиции  меньше 2000 но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
-select monthly_salary as "Employee salary",
-	   employee_name as "Ghost Employees"
+select monthly_salary as "Unassigned Salary"
 from salary
-join employee_salary
-	on salary.id = employee_salary.salary_id
+left join employee_salary
+	on salary.id = employee_salary.salary_id 
 left join employees
-	on employee_salary.employee_id = employees.id
-		where employee_name is null 
+	on  employees.id = employee_salary.employee_id 
+    	where employee_id is null
 			and monthly_salary <= 2000;
 	
 --5.Найти всех работников кому не начислена ЗП.
