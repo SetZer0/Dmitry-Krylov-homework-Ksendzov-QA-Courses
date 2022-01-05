@@ -236,7 +236,7 @@ join roles_employee
 	on employees.id = roles_employee.employee_id 
 join roles 
 	on roles_employee.role_id = roles.id 
-		where role_name like '%QA%';
+		where role_name like '%Junior% %QA%';
 	
 --21.Вывести среднюю зарплату всех Junior специалистов.
 select role_name as "Position",
