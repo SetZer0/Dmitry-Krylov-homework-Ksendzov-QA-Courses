@@ -16,7 +16,7 @@ join employees
 join salary
 	on salary.id = employee_salary.salary_id
 		where salary.monthly_salary < 2000;
-	
+		
 --3.Вывести все зарплатные позиции, но работник по ним не назначен. (ЗП есть, но не понятно кто её получает.)
 select monthly_salary as "Unassigned Salary"
 from salary
@@ -119,7 +119,6 @@ join roles_employee
 join roles
 	on roles_employee.role_id = roles.id 
 		where role_name like '%Junior%';
-
 	
 --13.Вывести имена и зарплаты Middle специалистов.
 select employee_name as "Middle Specialists",
@@ -164,7 +163,7 @@ join roles_employee
 join roles 
 	on roles_employee.role_id = roles.id 
 		where role_name like '%Java %';
-	
+
 --16.Вывести зарплаты Python разработчиков.
 select role_name as "Position",
 	   monthly_salary as "Salary"
@@ -208,7 +207,7 @@ join roles_employee
 join roles 
 	on roles_employee.role_id = roles.id 
 		where role_name like '%Middle JavaS%';
-		
+			
 --19.Вывести имена и зарплаты Senior Java разработчиков.
 select employee_name as "Employee names",
 	   role_name as "Position",
@@ -252,7 +251,7 @@ join roles
 	on roles_employee.role_id = roles.id 
 		where role_name like '%Junior%'
 		group by role_name;
-	
+		
 --22.Вывести сумму зарплат JS разработчиков.
 select role_name as "Position",
 	   sum(monthly_salary) as "Sum of Salary"
@@ -310,7 +309,7 @@ join roles_employee
 join roles 
 	on roles_employee.role_id = roles.id 
 		where role_name like '%QA%';
-	
+
 --26.Вывести количество Middle специалистов.
 select count(role_name) as "Amount of Middle Specialists"
 from employees
@@ -338,7 +337,7 @@ join roles
 		where role_name like '%developer%';
 
 --28.Вывести фонд (сумму) зарплаты разработчиков.
-select sum(monthly_salary) as "Payroll"
+select sum(monthly_salary) as "Devs Payroll"
 from employees
 left join employee_salary
 	on employees.id = employee_salary.employee_id 
@@ -347,7 +346,8 @@ left join salary
 join roles_employee
 	on employees.id = roles_employee.employee_id 
 join roles 
-	on roles_employee.role_id = roles.id;
+	on roles_employee.role_id = roles.id
+		where roles.role_name like '%developer%';
 
 --29.Вывести имена, должности и ЗП всех специалистов по возрастанию.
 select employee_name as "Employee names",
@@ -363,7 +363,7 @@ join roles_employee
 join roles 
 	on roles_employee.role_id = roles.id 
 		order by monthly_salary asc;
-	
+
 --30.Вывести имена, должности и ЗП всех специалистов по возрастанию у специалистов у которых ЗП от 1700 до 2300.
 select employee_name as "Employee names",
 	   role_name as "Position",
